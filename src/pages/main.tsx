@@ -11,6 +11,10 @@ const stickyNote = css`
   /* @media (max-width: 600px) {
     margin: 30px 5vw;
   } */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const modalOpenButton = css`
@@ -25,7 +29,14 @@ const modalOpenButton = css`
   appearance: none;
   background-color: #bae4ed;
   border-radius: 50%;
+  box-shadow:0 4px 0 0 #7abecc;
 `;
+//margin: 7px AuthenticatorAssertionResponse;
+//text-align: center;
+const displayText = css`
+  word-wrap: break-word
+`
+
 
 const Main: NextPage = () => {
   const [isOpenmodal, setIsOpenModal] = useState<boolean>(false);
@@ -35,7 +46,7 @@ const Main: NextPage = () => {
   return (
     <div>
       <div css={stickyNote}>
-        <p>付箋</p>
+        <p css={displayText}>付箋</p>
         <button css={modalOpenButton} onClick={() => swichOfModal()} />
       </div>
       {isOpenmodal === true && <Modal swichOfModal={swichOfModal} />}
