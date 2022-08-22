@@ -8,8 +8,16 @@ const modalContainer = css`
   bottom: 15vh;
   height: 80vh;
   width: 20vw;
-  border: 3px solid black;
+  border: 2px solid black;
 `;
+
+
+const textBox = css`
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 90%;
+  min-height: 100px;
+`
 
 type Props = {
   swichOfModal: () => void;
@@ -25,7 +33,7 @@ const Modal: React.FC<Props> = ({ swichOfModal }: Props) => {
       >
         閉じる
       </button>
-      <textarea></textarea>
+      <textarea css={textBox}></textarea>
       <input type="submit"></input>
     </div>
   );
