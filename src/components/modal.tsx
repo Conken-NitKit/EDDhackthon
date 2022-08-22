@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import '../pages/main';
+import axios from 'axios';
 
 const modalContainer = css`
   position: absolute;
@@ -18,6 +19,21 @@ type Props = {
 
 const Modal: React.FC<Props> = ({ swichOfModal, addInfoList }: Props) => {
   const [info, setInfo] = useState('');
+
+  // const data = new FormData();
+  // data.append('info', info);
+
+  // axios
+  //   .post('[POST先のURL]', data)
+  //   .then(function (response) {
+  //     // 送信成功時の処理
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     // 送信失敗時の処理
+  //     console.log(error);
+  //   });
+
   return (
     <div css={modalContainer}>
       <button
