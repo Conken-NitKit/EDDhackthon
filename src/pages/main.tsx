@@ -12,11 +12,14 @@ const stickyNoteContainer = css`
 `;
 
 const stickyNote = css`
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   margin: 6px;
   background-color: #bae4ed;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const modalOpenButton = css`
@@ -31,6 +34,12 @@ const modalOpenButton = css`
   appearance: none;
   background-color: #bae4ed;
   border-radius: 50%;
+  box-shadow: 0 4px 0 0 #7abecc;
+`;
+//margin: 7px AuthenticatorAssertionResponse;
+//text-align: center;
+const displayText = css`
+  word-wrap: break-word;
 `;
 
 const Main: NextPage = () => {
@@ -48,12 +57,12 @@ const Main: NextPage = () => {
       <div css={stickyNoteContainer}>
         {infoList.map((info) => (
           <div css={stickyNote}>
-            <p>{info}</p>
+            <p css={displayText}>{info}</p>
           </div>
         ))}
+        <button css={modalOpenButton} onClick={() => swichOfModal()} />
+        {isOpenmodal === true && <Modal swichOfModal={swichOfModal} addInfoList={addInfoList} />}
       </div>
-      <button css={modalOpenButton} onClick={() => swichOfModal()} />
-      {isOpenmodal === true && <Modal swichOfModal={swichOfModal} addInfoList={addInfoList} />}
     </div>
   );
 };

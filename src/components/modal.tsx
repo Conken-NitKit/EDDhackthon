@@ -9,7 +9,14 @@ const modalContainer = css`
   bottom: 15vh;
   height: 80vh;
   width: 20vw;
-  border: 3px solid black;
+  border: 2px solid black;
+`;
+
+const textBox = css`
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 90%;
+  min-height: 100px;
 `;
 
 type Props = {
@@ -43,7 +50,7 @@ const Modal: React.FC<Props> = ({ swichOfModal, addInfoList }: Props) => {
       >
         閉じる
       </button>
-      <textarea value={info} onChange={(e) => setInfo(e.target.value)} />
+      <textarea css={textBox} value={info} onChange={(e) => setInfo(e.target.value)} />
       <input type="submit" onClick={() => addInfoList(info)}></input>
     </div>
   );
