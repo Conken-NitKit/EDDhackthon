@@ -3,14 +3,20 @@ import type { NextPage } from 'next';
 import { css } from '@emotion/react';
 import Modal from '../components/modal';
 
+const stickyNoteContainer = css`
+  display: flex;
+  flex-wrap: wrap;
+  height: 85vh;
+  width: 100vw;
+  overflow: scroll;
+`;
+
 const stickyNote = css`
   height: 200px;
   width: 200px;
+  margin: 6px;
   background-color: #bae4ed;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  /* @media (max-width: 600px) {
-    margin: 30px 5vw;
-  } */
 `;
 
 const modalOpenButton = css`
@@ -29,16 +35,25 @@ const modalOpenButton = css`
 
 const Main: NextPage = () => {
   const [isOpenmodal, setIsOpenModal] = useState<boolean>(false);
+  const [infoList, setinfoList] = useState<string[]>([]);
   const swichOfModal = () => {
     isOpenmodal ? setIsOpenModal(false) : setIsOpenModal(true);
   };
+  const addInfoList = (info: string) => {
+    setinfoList([...infoList, info]);
+    swichOfModal();
+  };
   return (
     <div>
-      <div css={stickyNote}>
-        <p>付箋</p>
-        <button css={modalOpenButton} onClick={() => swichOfModal()} />
+      <div css={stickyNoteContainer}>
+        {infoList.map((info) => (
+          <div css={stickyNote}>
+            <p>{info}</p>
+          </div>
+        ))}
       </div>
-      {isOpenmodal === true && <Modal swichOfModal={swichOfModal} />}
+      <button css={modalOpenButton} onClick={() => swichOfModal()} />
+      {isOpenmodal === true && <Modal swichOfModal={swichOfModal} addInfoList={addInfoList} />}
     </div>
   );
 };

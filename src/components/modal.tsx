@@ -13,9 +13,11 @@ const modalContainer = css`
 
 type Props = {
   swichOfModal: () => void;
+  addInfoList: (info: string) => void;
 };
 
-const Modal: React.FC<Props> = ({ swichOfModal }: Props) => {
+const Modal: React.FC<Props> = ({ swichOfModal, addInfoList }: Props) => {
+  const [info, setInfo] = useState('');
   return (
     <div css={modalContainer}>
       <button
@@ -25,8 +27,8 @@ const Modal: React.FC<Props> = ({ swichOfModal }: Props) => {
       >
         閉じる
       </button>
-      <textarea></textarea>
-      <input type="submit"></input>
+      <textarea value={info} onChange={(e) => setInfo(e.target.value)} />
+      <input type="submit" onClick={() => addInfoList(info)}></input>
     </div>
   );
 };
